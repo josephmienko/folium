@@ -23,12 +23,12 @@ function App() {
     >
       <Typography variant="h1">Vite + React</Typography>
       <Button 
-        onClick={colorMode.toggleColorMode} 
-        variant="contained" 
-        sx={{ mt: 2 }}
-      >
-        Toggle Theme
-      </Button>
+          onClick={colorMode.toggleColorMode}
+          variant="contained"
+          sx={{ mt: 2 }}
+        >
+          Toggle Theme
+        </Button>
     </Box>
         <Drawer/>
         </>

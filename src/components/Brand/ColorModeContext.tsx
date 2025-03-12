@@ -1,7 +1,13 @@
 import { createContext, useState, useMemo } from "react";
 import { PaletteMode } from "@mui/material";
 
-export const ColorModeContext = createContext({
+interface ColorModeContextType {
+  mode: PaletteMode;
+  toggleColorMode: () => void;
+}
+
+
+export const ColorModeContext = createContext<ColorModeContextType>({
   mode: "light",
   toggleColorMode: () => {}, // ✅ Default placeholder
 });
@@ -29,3 +35,4 @@ export function ColorModeProvider({ children }: { children: React.ReactNode }) {
     </ColorModeContext.Provider>
   );
 }
+

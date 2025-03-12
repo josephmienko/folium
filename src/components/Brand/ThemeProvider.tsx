@@ -1,31 +1,32 @@
 import React, { createContext, useMemo, useState, ReactNode } from 'react';
 import { ThemeProvider as MuiThemeProvider, CssBaseline } from '@mui/material';
 import { createCustomTheme } from './theme';
+import { PaletteMode } from "@mui/material";
 
-// Define a strong type for the context
+
 interface ColorModeContextType {
-  toggleColorMode: () => void;
-}
+    mode: PaletteMode;
+    toggleColorMode: () => void;
+  }
 
-// ✅ Provide a default value (ensures no undefined context errors)
 export const ColorModeContext = createContext<ColorModeContextType>({
+  mode: 'light',
   toggleColorMode: () => {},
 });
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  // Store mode in state
   const [mode, setMode] = useState<'light' | 'dark'>('light');
-
-  // ✅ Ensure the theme updates dynamically when toggled
+  
   const theme = useMemo(() => createCustomTheme(mode), [mode]);
 
   const colorMode = useMemo(
     () => ({
+      mode,
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
       },
     }),
-    []
+    [mode]
   );
 
   return (
@@ -37,5 +38,4 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
     </ColorModeContext.Provider>
   );
 };
-
 export default ThemeProvider;
