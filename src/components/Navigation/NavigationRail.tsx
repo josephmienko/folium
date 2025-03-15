@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { MenuItem } from './NavigationConfiguration';
+import { useNavigate } from 'react-router-dom';
 
 interface NavigationRailProps {
   menuItems: MenuItem[];
@@ -9,6 +10,12 @@ interface NavigationRailProps {
 }
 
 export const NavigationRail = ({ menuItems, activeItem, handleMouseEnter }: NavigationRailProps) => {
+  const navigate = useNavigate();
+
+  const handleItemClick = (label: string, link: string) => {
+    navigate(link);
+  };
+
   return (
     <Box
       sx={{
@@ -39,10 +46,10 @@ export const NavigationRail = ({ menuItems, activeItem, handleMouseEnter }: Navi
             }}
           >
             <ListItemButton
-              component="a"
-              href={link}
+              component="div"
               selected={activeItem === label}
               onMouseEnter={() => handleMouseEnter(label)}
+              onClick={() => handleItemClick(label, link)}
               sx={{
                 backgroundColor: 'transparent',
                 flexDirection: 'column',

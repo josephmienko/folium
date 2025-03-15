@@ -10,7 +10,7 @@ interface MenuItem {
   link: string;
   subItems?: SubMenuItem[];
 }
-
+ 
 export const menuItems: MenuItem[] = [
   { label: 'Search', icon: 'search', link: '/search.html' },
   { label: 'Home', icon: 'home', link: '/' },
@@ -44,11 +44,13 @@ export const menuItems: MenuItem[] = [
     icon: 'palette', 
     link: '/styles',
     subItems: [
-      { label: 'CSS', link: '/develop/css' },
-      { label: 'SCSS', link: '/develop/scss' }
+      { label: 'CSS', link: '/styles/css' },
+      { label: 'SCSS', link: '/styles/scss' }
     ]
   },
   { label: 'Blog', icon: 'pages', link: '/blog' }
 ];
+
+export const screenWidthTransition = 960;
 
 export type { MenuItem, SubMenuItem };
